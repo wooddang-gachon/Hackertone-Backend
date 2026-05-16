@@ -1,0 +1,150 @@
+{
+	"info": {
+		"name": "Hackathon Backend API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Auth",
+			"item": [
+				{
+					"name": "회원가입",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/signUp/user", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "signUp", "user" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"gachon_id\": \"testuser1\",\n  \"name\": \"홍길동\",\n  \"password\": \"password123\"\n}" }
+					}
+				},
+				{
+					"name": "로그인",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/login", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "login" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"gachon_id\": \"testuser1\",\n  \"password\": \"password123\"\n}" }
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Donation",
+			"item": [
+				{
+					"name": "게시글 작성",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/donation/write", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "donation", "write" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"uidx\": 1,\n  \"title\": \"C++ 과제 도와주세요\",\n  \"text\": \"포인터 개념이 너무 어렵습니다.\",\n  \"duedate\": \"2024-12-31\",\n  \"exercise\": 0, \"study\": 1, \"music\": 0, \"game\": 0, \"clean\": 0,\n  \"accept\": [\n    { \"role\": \"튜터\", \"point\": 50 },\n    { \"role\": \"보조\", \"point\": 20 }\n  ]\n}" }
+					}
+				},
+				{
+					"name": "게시글 목록",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/donation/list", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "donation", "list" ] },
+						"body": { "mode": "raw", "raw": "{}" }
+					}
+				},
+				{
+					"name": "게시글 상세",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/donation/detail", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "donation", "detail" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"didx\": 1\n}" }
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Accept",
+			"item": [
+				{
+					"name": "역할 조회",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/accept/detail", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "accept", "detail" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"didx\": 1\n}" }
+					}
+				},
+				{
+					"name": "역할 신청",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/accept/subscribe", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "accept", "subscribe" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"uidx\": 2,\n  \"aidx\": 1\n}" }
+					}
+				},
+				{
+					"name": "역할 포인트 승인",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/accept/approval", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "accept", "approval" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"aidx\": 1\n}" }
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Comment",
+			"item": [
+				{
+					"name": "댓글 작성",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/comment/write", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "comment", "write" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"uidx\": 2,\n  \"didx\": 1,\n  \"text\": \"제가 도와드릴 수 있어요!\"\n}" }
+					}
+				},
+				{
+					"name": "대댓글 작성",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/comment/writeReply", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "comment", "writeReply" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"uidx\": 1,\n  \"cidx\": 1,\n  \"text\": \"오 언제 가능하신가요?\"\n}" }
+					}
+				},
+				{
+					"name": "댓글 조회",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/comment/detail", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "comment", "detail" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"didx\": 1\n}" }
+					}
+				}
+			]
+		},
+		{
+			"name": "5. Profile",
+			"item": [
+				{
+					"name": "포인트 조회",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/profile/point", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "profile", "point" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"uidx\": 1\n}" }
+					}
+				},
+				{
+					"name": "태그 조회",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/profile/tag", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "profile", "tag" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"uidx\": 1\n}" }
+					}
+				}
+			]
+		}
+	]
+}

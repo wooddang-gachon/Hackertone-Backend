@@ -22,9 +22,16 @@ mysql2_DATABASE=your_db_name
 npm install
 ```
 
-### 3. Run Development Server
+### 3. Run Server
+
+**Development Mode (with logging)**
 ```bash
 npm run start-dev
+```
+
+**Production Mode (no logging)**
+```bash
+npm start
 ```
 
 ## Features
