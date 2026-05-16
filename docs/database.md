@@ -14,8 +14,8 @@
 
 | 컬럼명 | 데이터 타입 | 제약 조건 | 설명 |
 | :--- | :--- | :--- | :--- |
-| `uidx` | INT | PK | 사용자 고유 식별자 |
-| `gachon_id` | VARCHAR(100) | KEY | 가천대학교 아이디 |
+| `uidx` | INT | PK (AI) | 사용자 고유 식별자 |
+| `gachon_id` | VARCHAR(100) | PK | 가천대학교 아이디 |
 | `name` | VARCHAR(100) | - | 사용자 이름 |
 | `password` | VARCHAR(100) | - | 비밀번호 (암호화) |
 | `point` | INT | - | 보유 포인트 |
@@ -32,23 +32,28 @@
 
 | 컬럼명 | 데이터 타입 | 제약 조건 | 설명 |
 | :--- | :--- | :--- | :--- |
-| `tidx` | INT | PK | 임시 데이터 고유 식별자 |
-| `gachon_id` | VARCHAR(100) | - | 가천대학교 아이디 |
+| `tidx` | INT | PK (AI) | 임시 데이터 고유 식별자 |
+| `gachon_id` | VARCHAR(100) | PK | 가천대학교 아이디 |
 | `otp` | INT | - | 발급된 OTP 인증번호 |
 
 ---
 
 ## 3. donation
-재능 기부 게시글 정보를 저장하는 테이블입니다.
+재능 기부 게시글 정보를 저장하는 테이블입니다. 기존의 단일 `tag` 컬럼 대신 개별 카테고리 컬럼을 사용합니다.
 
 | 컬럼명 | 데이터 타입 | 제약 조건 | 설명 |
 | :--- | :--- | :--- | :--- |
-| `didx` | INT | PK | 게시글 고유 식별자 |
-| `writerIdx` | INT | FK (`user.uidx`) | 작성자 고유 식별자 |
+| `didx` | INT | PK (AI) | 게시글 고유 식별자 |
+| `status` | INT | - | 게시글 상태 코드 |
+| `writerIdx` | INT | - | 작성자 고유 식별자 |
 | `title` | VARCHAR(100) | - | 게시글 제목 |
-| `tag` | VARCHAR(500) | - | 태그 정보 |
 | `text` | VARCHAR(1000) | - | 게시글 본문 내용 |
 | `duedate` | DATE | - | 마감일 |
+| `exercise` | INT | - | 운동 카테고리 여부/수치 |
+| `study` | INT | - | 공부 카테고리 여부/수치 |
+| `music` | INT | - | 음악 카테고리 여부/수치 |
+| `game` | INT | - | 게임 카테고리 여부/수치 |
+| `clean` | INT | - | 청소 카테고리 여부/수치 |
 
 ---
 
@@ -57,9 +62,9 @@
 
 | 컬럼명 | 데이터 타입 | 제약 조건 | 설명 |
 | :--- | :--- | :--- | :--- |
-| `aidx` | INT | PK | 수락/매칭 고유 식별자 |
+| `aidx` | INT | PK (AI) | 수락/매칭 고유 식별자 |
 | `status` | INT | - | 매칭 상태 코드 |
-| `didx` | INT | FK (`donation.didx`) | 관련 게시글 고유 식별자 |
+| `didx` | INT | - | 관련 게시글 고유 식별자 |
 | `role` | VARCHAR(100) | - | 역할 구분 |
 | `point` | INT | - | 관련 지급/차감 포인트 |
 
@@ -70,8 +75,8 @@
 
 | 컬럼명 | 데이터 타입 | 제약 조건 | 설명 |
 | :--- | :--- | :--- | :--- |
-| `cidx` | INT | PK | 댓글 고유 식별자 |
-| `parent_cidx` | INT | FK (`comment.cidx`) | 부모 댓글 고유 식별자 (대댓글 구현용) |
-| `didx` | INT | FK (`donation.didx`) | 관련 게시글 고유 식별자 |
-| `uidx` | INT | FK (`user.uidx`) | 댓글 작성자 고유 식별자 |
+| `cidx` | INT | PK (AI) | 댓글 고유 식별자 |
+| `parent_cidx` | INT | Null 허용 | 부모 댓글 고유 식별자 (대댓글 구현용) |
+| `didx` | INT | - | 관련 게시글 고유 식별자 |
+| `uidx` | INT | - | 댓글 작성자 고유 식별자 |
 | `text` | VARCHAR(1000) | - | 댓글 본문 내용 |
