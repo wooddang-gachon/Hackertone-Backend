@@ -13,5 +13,10 @@ export default {
   async findByDidx(didx) {
     const [rows] = await pool.execute("SELECT * FROM comment WHERE didx = ?", [didx]);
     return rows;
+  },
+
+  async findById(cidx) {
+    const [rows] = await pool.execute("SELECT * FROM comment WHERE cidx = ?", [cidx]);
+    return rows[0];
   }
 };
