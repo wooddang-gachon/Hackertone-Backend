@@ -33,9 +33,12 @@ export default {
 
     
   databaseHOST: process.env.mysql2_HOST,
+  databasePORT: process.env.mysql2_PORT,
   databaseUSER: process.env.mysql2_USER,
   databasePASSWORD: process.env.mysql2_PASSWORD,
   databaseNAME: process.env.mysql2_DATABASE,
+
+  resendApiKey: process.env.RESEND_API_KEY,
 
   /**
    * Used by winston logger
@@ -48,6 +51,6 @@ export default {
    * API configs
    */
   api: {
-    prefix: process.env.API_PREFIX,
+    prefix: process.env.API_PREFIX || "/",
   },
 };
