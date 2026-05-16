@@ -3,6 +3,7 @@ import authRouter from "./routes/auth.js";
 import chatroomRouter from "./routes/chatroom.js";
 import donationRouter from "./routes/donation.js";
 import profileRouter from "./routes/profile.js";
+import acceptRouter from "./routes/accept.js";
 
 export default () => {
   const app = Router();
@@ -11,6 +12,8 @@ export default () => {
   chatroomRouter(app);
   donationRouter(app);
   profileRouter(app);
+  acceptRouter(app);
 
   return app;
 };
+
