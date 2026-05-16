@@ -70,9 +70,15 @@
 - **Request Body**: `{ "didx": number }`
 - **Response**: `{ "res_status": true, "didx": number, "title": "string", ... }`
 
+## 10. 게시글 상태 변경 (Change Post Status)
+게시글의 상태(모집 중, 매칭 완료 등)를 변경합니다.
+- **Endpoint**: `POST /donation/statusChange`
+- **Request Body**: `{ "didx": number, "status": number }`
+- **Response**: `{ "res_status": true }`
+
 ---
 
-## 10. 특정 게시글 역할 조회 (Get Post Roles)
+## 11. 특정 게시글 역할 조회 (Get Post Roles)
 게시글에 할당된 역할 목록을 조회합니다.
 - **Endpoint**: `POST /accept/detail`
 - **Request Body**: `{ "didx": number }`
@@ -84,15 +90,27 @@
 - **Request Body**: `{ "uidx": number, "aidx": number }`
 - **Response**: `{ "res_status": true }`
 
-## 12. 포인트 지급 승인 (Approve Role)
+## 12. 역할 신청 취소 (Cancel Role Subscription)
+신청한 역할을 취소합니다.
+- **Endpoint**: `POST /accept/subscribeCancel`
+- **Request Body**: `{ "aidx": number }`
+- **Response**: `{ "res_status": true }`
+
+## 13. 포인트 지급 승인 (Approve Role)
 활동 완료 후 포인트를 지급하고 능력치를 상승시킵니다.
 - **Endpoint**: `POST /accept/approval`
 - **Request Body**: `{ "aidx": number }`
 - **Response**: `{ "res_status": true }`
 
+## 14. 포인트 지급 거절 (Refuse Role)
+활동이 미흡하거나 사유가 있을 경우 포인트 지급을 거절합니다.
+- **Endpoint**: `POST /accept/refusal`
+- **Request Body**: `{ "aidx": number }`
+- **Response**: `{ "res_status": true }`
+
 ---
 
-## 13. 특정 게시글 댓글 조회 (Get Post Comments)
+## 15. 특정 게시글 댓글 조회 (Get Post Comments)
 특정 게시글에 달린 댓글과 대댓글 목록을 조회합니다.
 - **Endpoint**: `POST /comment/detail`
 - **Request Body**: `{ "didx": number }`

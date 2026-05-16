@@ -56,6 +56,15 @@
 						"url": { "raw": "http://localhost:3000/donation/detail", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "donation", "detail" ] },
 						"body": { "mode": "raw", "raw": "{\n  \"didx\": 3\n}" }
 					}
+				},
+				{
+					"name": "게시글 상태 변경",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/donation/statusChange", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "donation", "statusChange" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"didx\": 3,\n  \"status\": 2\n}" }
+					}
 				}
 			]
 		},
@@ -81,11 +90,29 @@
 					}
 				},
 				{
+					"name": "역할 신청 취소",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/accept/subscribeCancel", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "accept", "subscribeCancel" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"aidx\": 6\n}" }
+					}
+				},
+				{
 					"name": "역할 포인트 승인",
 					"request": {
 						"method": "POST",
 						"header": [ { "key": "Content-Type", "value": "application/json" } ],
 						"url": { "raw": "http://localhost:3000/accept/approval", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "accept", "approval" ] },
+						"body": { "mode": "raw", "raw": "{\n  \"aidx\": 6\n}" }
+					}
+				},
+				{
+					"name": "역할 포인트 지급 거절",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"url": { "raw": "http://localhost:3000/accept/refusal", "protocol": "http", "host": [ "localhost" ], "port": "3000", "path": [ "accept", "refusal" ] },
 						"body": { "mode": "raw", "raw": "{\n  \"aidx\": 6\n}" }
 					}
 				}
