@@ -48,17 +48,20 @@ src/
 │       ├── auth.js     # 로그인, 회원가입, OTP 인증
 │       ├── donation.js # 게시글 관리 및 매칭 관련
 │       ├── profile.js  # 포인트 및 능력치 조회
-│       └── comment.js  # 댓글/대댓글 조회 및 작성
+│       ├── comment.js  # 댓글/대댓글 조회 및 작성
+│       └── ranking.js  # 카테고리별 랭킹 조회
 ├── services/           # 서비스 레이어 (비즈니스 로직)
 │   ├── auth.js         # 인증 및 계정 생성 로직
 │   ├── donation.js     # 게시물 관리 및 매칭 비즈니스 로직
 │   ├── profile.js      # 사용자 정보 처리
-│   └── comment.js      # 댓글/대댓글 관련 비즈니스 로직
+│   ├── comment.js      # 댓글/대댓글 관련 비즈니스 로직
+│   └── ranking.js      # 랭킹 산출 비즈니스 로직
 ├── repositories/       # 레포지토리 레이어 (데이터 액세스)
 │   ├── users.js        # 사용자 데이터 CRUD
 │   ├── donation.js     # 게시글 데이터 CRUD
 │   ├── comment.js      # 댓글 데이터 CRUD
-│   └── accept.js       # 매칭 수락 데이터 관리
+│   ├── accept.js       # 매칭 수락 데이터 관리
+│   └── ranking.js      # 랭킹 데이터 조회 SQL
 ├── loaders/            # 로더 레이어 (초기 설정 및 의존성 주입)
 │   ├── express.js      # Express 미들웨어 및 라우트 로드
 │   ├── mysql.js        # MySQL 커넥션 풀 초기화

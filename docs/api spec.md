@@ -125,3 +125,30 @@
 - **Endpoint**: `POST /comment/writeReply`
 - **Request Body**: `{ "uidx": number, "cidx": number, "text": "string" }`
 - **Response**: `{ "res_status": true }`
+
+---
+
+## 16. 카테고리별 랭킹 조회 (Get Rankings by Category)
+특정 카테고리(포인트, 운동, 공부 등)를 기준으로 상위 랭커 목록과 내 순위를 조회합니다.
+- **Endpoint**: `POST /rankings/:category`
+- **Path Parameter**: `category` (point, exercise, study, music, game, clean)
+- **Request Body**:
+  ```json
+  {
+    "uidx": number,   // 내 순위를 확인하고 싶은 경우 (선택)
+    "limit": number   // 조회할 인원 수 (기본값 10, 선택)
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "res_status": true,
+    "data": {
+      "rankList": [
+        { "rank": 1, "nickname": "string", "score": number },
+        ...
+      ],
+      "myRank": { "rank": number, "nickname": "string", "score": number } // uidx 요청 시 포함
+    }
+  }
+  ```
