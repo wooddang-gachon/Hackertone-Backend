@@ -4,7 +4,7 @@ export default {
   async create(donation) {
     const { status, writerIdx, title, text, duedate, exercise, study, music, game, clean } = donation;
     const [result] = await pool.execute(
-      "INSERT INTO donation (status, writerIdx, title, text, duedate, exercise, study, music, game, clean) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO donation (status, writeridx, title, text, duedate, exercise, study, music, game, clean) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [status, writerIdx, title, text, duedate, exercise, study, music, game, clean]
     );
     return result.insertId;

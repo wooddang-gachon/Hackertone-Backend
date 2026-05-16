@@ -4,7 +4,7 @@ export default {
   async create(comment) {
     const { parent_cidx, didx, uidx, text } = comment;
     const [result] = await pool.execute(
-      "INSERT INTO comment (parent_cidx, didx, uidx, text) VALUES (?, ?, ?, ?)",
+      "INSERT INTO comment (parent_cidx, didx, writeridx, text) VALUES (?, ?, ?, ?)",
       [parent_cidx || null, didx, uidx, text]
     );
     return result.insertId;
