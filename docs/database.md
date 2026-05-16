@@ -78,5 +78,5 @@
 | `cidx` | INT | PK (AI) | 댓글 고유 식별자 |
 | `parent_cidx` | INT | Null 허용 | 부모 댓글 고유 식별자 (대댓글 구현용) |
 | `didx` | INT | - | 관련 게시글 고유 식별자 |
-| `uidx` | INT | - | 댓글 작성자 고유 식별자 |
+| `uidx` | INT | - | 댓글 작성자 고유 식별자 (API 상에서는 `writeidx`로 참조됨) |
 | `text` | VARCHAR(1000) | - | 댓글 본문 내용 |
