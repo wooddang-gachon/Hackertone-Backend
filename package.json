@@ -11,8 +11,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=production node src/app.js",
-    "start-dev": "NODE_ENV=development nodemon --watch ./src ./src/app.js"
+    "start": "cross-env NODE_ENV=production node src/app.js",
+    "start-dev": "cross-env NODE_ENV=development nodemon --watch ./src ./src/app.js"
   },
   "dependencies": {
     "celebrate": "^15.0.3",
@@ -24,5 +24,8 @@
     "socket.io": "^4.8.3",
     "winston": "^3.19.0",
     "ws": "^8.19.0"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0"
   }
 }
