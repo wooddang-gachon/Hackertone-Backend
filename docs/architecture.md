@@ -24,8 +24,16 @@
 - **Runtime**: Node.js (ES Modules)
 - **Framework**: Express.js
 - **Database**: MySQL 8.0 (Host: gdgoc.net)
-- **Logging**: Winston
+- **Logging**: Winston (Request/Response 통합 로깅)
 - **Process Manager**: Nodemon (Development)
+
+---
+
+## 2.1. Monitoring & Logging
+본 서비스는 안정적인 운영과 디버깅을 위해 Winston 기반의 통합 로깅 시스템을 구축하였습니다.
+- **Middleware**: `src/api/middlewares/logger.js`가 모든 API 호출을 가로채어 기록합니다.
+- **로그 범위**: 요청 메서드, URL, HTTP 상태 코드, 처리 시간(ms), **요청 바디(Body)** 및 **응답 데이터(Response)** 전체를 JSON 형태로 기록합니다.
+- **활용**: 개발 단계에서의 실시간 구동 과정 확인 및 운영 단계에서의 장애 원인 파악에 활용됩니다.
 
 ---
 
@@ -64,14 +72,14 @@ src/
 ---
 
 ## 4. Data Flow Example
-1.  **Request**: 사용자가 `/api/login`으로 POST 요청 발송.
+1.  **Request**: 사용자가 `/login`으로 POST 요청 발송.
 2.  **Route**: `routes/auth.js`에서 요청을 받아 `authService.login()` 호출.
 3.  **Service**: `services/auth.js`에서 비밀번호 검증 및 `userRepo.findByGachonId()` 호출.
 4.  **Repository**: `repositories/users.js`에서 `SELECT` 쿼리 실행 후 결과 반환.
 5.  **Response**: Service의 결과를 바탕으로 Route에서 `200 OK` 또는 `400 Bad Request` 응답.
 
 **Example 2: 전문가 타이틀 조회 (Get Expert Tags)**
-1.  **Request**: 사용자가 `/api/profile/tag`로 POST 요청 발송.
+1.  **Request**: 사용자가 `/profile/tag`로 POST 요청 발송.
 2.  **Route**: `routes/profile.js`에서 요청을 받아 `profileService.getTags()` 호출.
 3.  **Service**: `services/profile.js`에서 `userRepo.findById()`를 호출하여 사용자 정보를 가져옴.
 4.  **Repository**: `repositories/users.js`에서 해당 사용자의 5가지 능력치(`exercise`, `study` 등) 정보를 반환.

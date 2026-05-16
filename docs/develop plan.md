@@ -23,7 +23,7 @@
     - 작성 시 유저의 현재 포인트를 조회하여 `pay_point <= current_point` 검증 로직 추가.
     - 다중 카테고리(exercise, study 등) 입력값 처리 확인.
 2.  **댓글 시스템 구현** (New Files)
-    - `src/api/routes/comment.js`: 특정 게시글의 댓글 목록 조회(`POST /api/comment/detail`), 댓글 작성(`POST /api/comment/write`), 대댓글 작성(`POST /api/comment/writeReply`) 라우트 생성.
+    - `src/api/routes/comment.js`: 특정 게시글의 댓글 목록 조회(`POST /comment/detail`), 댓글 작성(`POST /comment/write`), 대댓글 작성(`POST /comment/writeReply`) 라우트 생성.
     - `src/services/comment.js` & `src/repositories/comment.js`: 댓글 CRUD 비즈니스 로직 및 SQL 구현.
 
 ---
@@ -31,11 +31,11 @@
 ## 🤝 Phase 3: 매칭 및 보상 시스템 (Matching & Reward)
 **목표**: 서비스의 핵심인 '매칭 수락'과 '활동 완료에 따른 보상'을 구현합니다.
 
-1.  **매칭 수락 API** (`POST /api/donation/accept`)
+1.  **매칭 수락 API** (`POST /donation/accept`)
     - 작성자가 특정 댓글의 유저를 수락.
     - `donation.status`를 '진행 중'으로 변경.
     - `accept` 테이블에 매칭 이력 생성.
-2.  **활동 완료 및 정산 API** (`POST /api/donation/complete`)
+2.  **활동 완료 및 정산 API** (`POST /donation/complete`)
     - 작성자가 활동 종료 후 완료 처리.
     - `donation.status`를 '완료'로 변경.
     - **트랜잭션 처리**:

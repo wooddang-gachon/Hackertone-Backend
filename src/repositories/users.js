@@ -14,7 +14,7 @@ export default {
   async create(user) {
     const { gachon_id, name, password } = user;
     const [result] = await pool.execute(
-      "INSERT INTO user (gachon_id, name, password, point, exercise, study, music, game, clean) VALUES (?, ?, ?, 0, 0, 0, 0, 0, 0)",
+      "INSERT INTO user (gachon_id, name, password, point, exercise, study, music, game, clean) VALUES (?, ?, ?, 100, 0, 0, 0, 0, 0)",
       [gachon_id, name, password]
     );
     return result.insertId;

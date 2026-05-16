@@ -4,8 +4,8 @@
 
 가천대 아이디로 인증 번호를 발송합니다.
 
-- **Endpoint**: `POST /api/signUp/createOtp`
-- **Full URL**: `https://hackathon.gdgoc.net/api/signUp/createOtp`
+- **Endpoint**: `POST /signUp/createOtp`
+- **Full URL**: `https://hackathon.gdgoc.net/signUp/createOtp`
 - **Request Body**:
   ```json
   {
@@ -33,8 +33,8 @@
 
 발송된 인증 번호를 검증합니다.
 
-- **Endpoint**: `POST /api/signUp/otp`
-- **Full URL**: `https://hackathon.gdgoc.net/api/signUp/otp`
+- **Endpoint**: `POST /signUp/otp`
+- **Full URL**: `https://hackathon.gdgoc.net/signUp/otp`
 - **Request Body**:
   ```json
   {
@@ -62,8 +62,8 @@
 
 회원 정보를 등록합니다.
 
-- **Endpoint**: `POST /api/signUp/user`
-- **Full URL**: `https://hackathon.gdgoc.net/api/signUp/user`
+- **Endpoint**: `POST /signUp/user`
+- **Full URL**: `https://hackathon.gdgoc.net/signUp/user`
 - **Request Body**:
   ```json
   {
@@ -92,8 +92,8 @@
 
 서비스에 로그인합니다.
 
-- **Endpoint**: `POST /api/login`
-- **Full URL**: `https://hackathon.gdgoc.net/api/login`
+- **Endpoint**: `POST /login`
+- **Full URL**: `https://hackathon.gdgoc.net/login`
 - **Request Body**:
   ```json
   {
@@ -147,8 +147,8 @@
 
 사용자의 현재 보유 포인트를 조회합니다.
 
-- **Endpoint**: POST /api/profile/point
-- **Full URL**: https://hackathon.gdgoc.net/api/profile/point
+- **Endpoint**: POST /profile/point
+- **Full URL**: https://hackathon.gdgoc.net/profile/point
 - **Request Body**:
   ```json
   {
@@ -176,8 +176,8 @@
 
 사용자의 카테고리별 전문가 타이틀 수치를 조회합니다.
 
-- **Endpoint**: POST /api/profile/tag
-- **Full URL**: https://hackathon.gdgoc.net/api/profile/tag
+- **Endpoint**: POST /profile/tag
+- **Full URL**: https://hackathon.gdgoc.net/profile/tag
 - **Request Body**:
   ```json
   {
@@ -209,8 +209,8 @@
 
 새로운 재능 기부 또는 요청 게시글을 작성합니다.
 
-- **Endpoint**: `POST /api/donation`
-- **Full URL**: `https://hackathon.gdgoc.net/api/donation`
+- **Endpoint**: `POST /donation`
+- **Full URL**: `https://hackathon.gdgoc.net/donation`
 - **Request Body**:
   ```json
   {
@@ -247,8 +247,8 @@
 
 등록된 모든 게시글 목록을 조회합니다.
 
-- **Endpoint**: `POST /api/donation`
-- **Full URL**: `https://hackathon.gdgoc.net/api/donation`
+- **Endpoint**: `POST /donation`
+- **Full URL**: `https://hackathon.gdgoc.net/donation`
 - **Response**:
   - **200 OK**:
     ```json
@@ -276,47 +276,49 @@
 
 특정 게시글에 달린 댓글과 대댓글 목록을 조회합니다.
 
-- **Endpoint**: `POST /api/comment/detail`
-- **Full URL**: `https://hackathon.gdgoc.net/api/comment/detail`
+- **Endpoint**: `POST /comment/detail`
+- **Full URL**: `https://hackathon.gdgoc.net/comment/detail`
 - **Request Body**:
-  ````json
+  ```json
   {
     "didx": number
   }
-  - **Response**:
-    - **200 OK**:
-      ```json
-      {
-        "res_status": true,
-        "comment": [
-          {
-            "cidx": number,
-            "writeidx": number,
-            "text": "string",
-            "reply": [
-              {
-                "writeidx": number,
-                "text": "string"
-              }
-            ]
-          }
-        ]
-      }
-      ```
-    ```  - **400 Bad Request**:
+  ```
+- **Response**:
+  - **200 OK**:
+    ```json
+    {
+      "res_status": true,
+      "comment": [
+        {
+          "cidx": number,
+          "writeidx": number,
+          "text": "string",
+          "reply": [
+            {
+              "writeidx": number,
+              "text": "string"
+            }
+          ]
+        }
+      ]
+    }
+    ```
+  - **400 Bad Request**:
     ```json
     {
       "res_status": false
     }
-  ````
+    ```
 
 ---
 
 ## 11. 댓글 작성 (Create Comment)
+
 게시글에 새로운 댓글을 작성합니다.
 
-- **Endpoint**: `POST /api/comment/write`
-- **Full URL**: `https://hackathon.gdgoc.net/api/comment/write`
+- **Endpoint**: `POST /comment/write`
+- **Full URL**: `https://hackathon.gdgoc.net/comment/write`
 - **Request Body**:
   ```json
   {
@@ -343,10 +345,11 @@
 ---
 
 ## 12. 대댓글 작성 (Create Reply)
+
 특정 댓글에 대댓글을 작성합니다.
 
-- **Endpoint**: `POST /api/comment/writeReply`
-- **Full URL**: `https://hackathon.gdgoc.net/api/comment/writeReply`
+- **Endpoint**: `POST /comment/writeReply`
+- **Full URL**: `https://hackathon.gdgoc.net/comment/writeReply`
 - **Request Body**:
   ```json
   {
@@ -368,4 +371,3 @@
       "res_status": false
     }
     ```
-

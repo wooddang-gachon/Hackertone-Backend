@@ -9,10 +9,12 @@ export default (app) => {
   // api spec #1: 인증 이메일 발신
   route.post("/signUp/createOtp", async (req, res) => {
     const { gachon_id } = req.body;
+    console.log("Received createOtp request for gachon_id:", gachon_id);
     try {
       const result = await authService.createOtp(gachon_id);
       res.status(200).json({ res_status: true, tidx: result.tidx });
     } catch (err) {
+      console.error("Error creating OTP:", err);
       res.status(400).json({ res_status: false });
     }
   });
