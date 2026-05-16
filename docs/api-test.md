@@ -163,6 +163,22 @@
 
 ---
 
+### [랭킹 - Ranking]
+
+#### 카테고리별 랭킹 조회
+
+- **URL**: `http://localhost:3000/rankings/exercise` (운동 기준)
+- **Body (JSON)**:
+
+```json
+{
+  "uidx": 1,
+  "limit": 10
+}
+```
+
+---
+
 ### [프로필 - Profile]
 
 #### 현재 포인트 조회
