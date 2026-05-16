@@ -33,7 +33,7 @@ export default {
 
     // 2. 포인트 정산
     // 작성자 포인트 차감
-    await userRepo.updatePoints(donation.writerIdx, -accept.point);
+    await userRepo.updatePoints(donation.writeridx, -accept.point);
     // 수락자 포인트 가산
     await userRepo.updatePoints(accept.uidx, accept.point);
 

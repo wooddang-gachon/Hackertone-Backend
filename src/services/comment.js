@@ -9,7 +9,7 @@ export default {
     const result = [];
 
     rawComments.forEach(c => {
-      const commentObj = { ...c, reply: [] };
+      const commentObj = { ...c, uidx: c.writeridx, reply: [] };
       commentMap.set(c.cidx, commentObj);
       
       if (!c.parent_cidx) {
@@ -22,7 +22,7 @@ export default {
         const parent = commentMap.get(c.parent_cidx);
         if (parent) {
           parent.reply.push({
-            writeidx: c.uidx,
+            writeidx: c.writeridx,
             text: c.text
           });
         }

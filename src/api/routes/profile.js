@@ -27,4 +27,15 @@ export default (app) => {
       res.status(400).json({ res_status: false });
     }
   });
+
+  // 프로필 상세 정보 조회
+  route.post("/info", async (req, res) => {
+    const { uidx } = req.body;
+    const userInfo = await profileService.getUserInfo(uidx);
+    if (userInfo) {
+      res.status(200).json({ res_status: true, ...userInfo });
+    } else {
+      res.status(400).json({ res_status: false });
+    }
+  });
 };
